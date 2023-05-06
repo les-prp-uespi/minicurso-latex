@@ -2,7 +2,7 @@ ROOT = main
 BIBTEX = $(ROOT).aux
 LATEX = latex
 PDFLATEX = pdflatex
-PDFLATEX_ARGS = -file-line-error -interaction  -recorder --src-specials
+PDFLATEX_ARGS = -file-line-error -interaction nonstopmode -recorder --src-specials
 
 all: distclean pdf clean
 
@@ -14,13 +14,8 @@ clean:
 	
 pdf:
 	$(PDFLATEX)  $(PDFLATEX_ARGS) $(ROOT)
-# makeindex -s confproc2.ist $(ROOT).idx
 	bibtex $(BIBTEX)
 	$(PDFLATEX) $(PDFLATEX_ARGS) $(ROOT)
 	$(PDFLATEX) $(PDFLATEX_ARGS) $(ROOT)
 	$(PDFLATEX) $(PDFLATEX_ARGS) $(ROOT)
-# $(LATEX) $(ROOT)
-# bibtex $(BIBTEX)
-# $(LATEX) $(ROOT)
-# $(LATEX) $(ROOT)
 	mv ${ROOT}.pdf ../minicurso.pdf
