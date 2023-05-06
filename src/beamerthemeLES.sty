@@ -1,0 +1,156 @@
+\usetheme{Rochester}
+
+\RequirePackage{pgf,tikz,xparse}
+
+\setbeamercovered{dynamic}
+
+\frenchspacing %TeX's Default is bad?
+\renewcommand{\arraystretch}{1.2}   %more table spacing
+
+\newenvironment{indentblock}
+{\begin{flushleft}\vspace{-.5\baselineskip}\addtolength{\leftskip}{2em}}{\end{flushleft}}
+
+\definecolor{oxygenorange}{HTML}{F7800a}
+\definecolor{oxygengray}{HTML}{383838}
+\definecolor{oxygenlightgray}{HTML}{eeeeee}
+\definecolor{oxygenblue}{HTML}{263F99}
+\definecolor{frame}{HTML}{061F7a}
+\definecolor{blueles}{HTML}{002255} % azul LES 
+\definecolor{redles}{HTML}{ed3237} % vermelho LES
+
+\setbeamercolor*{my colors}{bg=white,fg=blueles}
+\setbeamercolor*{normal text}{use=my colors,parent=my colors}
+\setbeamercolor*{Title bar}{bg=black!85}
+\setbeamercolor*{Location bar}{fg=blueles}
+\setbeamercolor*{frametitle}{use=my colors,parent=my colors}
+\setbeamercolor*{block title}{use=my colors,fg=white,parent=my colors,bg=oxygenblue}
+\setbeamercolor*{block body}{use=my colors,bg=my colors.bg!85!my colors.fg}
+\setbeamercolor*{section in toc}{use=normal text,parent=normal text}
+\setbeamercolor*{section in head/foot}{fg=black!80,bg=oxygenblue}
+\setbeamercolor*{section in toc shaded}{fg=oxygenblue}
+\setbeamercolor*{alerted text}{fg=redles}
+\setbeamercolor*{description item}{fg=oxygenblue}
+\setbeamercolor*{navigation symbols}{use=my colors}
+\setbeamercolor*{itemize item}{fg=black}
+\setbeamercolor*{itemize subitem}{fg=black!30}
+\setbeamercolor*{enumerate item}{fg=oxygenblue}
+\setbeamercolor*{local structure}{fg=oxygengray}
+\setbeamercolor*{structure}{fg=my colors.bg!85!my colors.fg}
+\setbeamercolor*{title}{use=my colors,parent=my colors,bg=structure.fg}
+
+
+
+\setbeamerfont{section in head/foot}{size=\tiny,shape=\scshape}
+\setbeamerfont{frametitle}{size=\LARGE}
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{author}{series=\bfseries,size=\normalsize}
+\setbeamerfont{institute}{series=\mdseries,size=\small}
+\setbeamerfont{date}{parent=institute,size=\small}
+\setbeamerfont{section in toc}{size=\Large}
+\setbeamerfont{subsection in toc}{size=\small}
+\setbeamerfont{alerted text}{series=\bfseries}
+
+
+
+\setbeamertemplate{itemize item}[circle]{}
+\setbeamertemplate{itemize subitem}[square]{}
+\setbeamertemplate{enumerate items}[circle]{}
+\setbeamertemplate{sections/subsections in toc}[square]{}
+\setbeamertemplate{sections in toc}[ball]{}
+
+
+% Suppress navigation symbols
+\defbeamertemplate*{navigation symbols}{LES}{}
+
+% \setbeamertemplate{background}
+% {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{../img/background}
+% }
+
+\setbeamertemplate{background canvas}{%
+  \ifnum\c@framenumber=1%
+     % On title page
+    %  \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{../img/banner}
+  \else%
+     % Other frames background
+     \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{../img/background.pdf}
+  \fi%
+}%
+
+\setbeamertemplate{title page}
+{%
+
+  \vspace{16ex}
+  \par\bigskip\medskip
+  {\usebeamerfont{title}\inserttitle}
+  \par\bigskip\medskip
+  
+  \begin{tikzpicture}
+    \draw
+      (-1,0) node[anchor=north west,fill=black!10] (author) {
+        \begin{minipage}{8cm}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute
+        \end{minipage}
+      }
+      (8,.4) node[anchor=north west, inner sep=0cm]{\includegraphics[scale=.4]{../img/les.pdf}}
+      (3,-3) node[anchor=north west]{
+      \begin{minipage}{9cm}
+        \usebeamerfont{date}\insertdate
+      \end{minipage}
+      }
+    ;
+  \end{tikzpicture}
+}
+
+
+\NewDocumentCommand{\framecolorbox}{oommm}
+ {% #1 = width (optional)
+  % #2 = inner alignment (optional)
+  % #3 = frame color
+  % #4 = background color
+  % #5 = text
+  \IfValueTF{#1}
+   {%
+    \IfValueTF{#2}
+     {\fcolorbox{#3}{#4}{\makebox[#1][#2]{#5}}}
+     {\fcolorbox{#3}{#4}{\makebox[#1]{#5}}}%
+   }
+   {\fcolorbox{#3}{#4}{#5}}%
+ }
+ 
+\setbeamertemplate{frametitle}
+{%
+\usebeamerfont{frametitle}%
+% \hspace{-4ex}\fcolorbox{white}{black!15}{\hspace{2ex}\insertframetitle\strut}%
+
+\hspace{-4ex}\framecolorbox[11cm][l]{white}{black!15}{\hspace{2ex}\strut\insertframetitle\strut}
+}
+
+
+\setbeamertemplate{headline}
+{%
+\vskip5mm%
+}
+
+\setbeamertemplate{footline}
+{%
+  \usebeamercolor{Location bar}%
+  \usebeamerfont{section in head/foot}%
+  \begin{tikzpicture}[baseline]
+    \tikzset{location/.style={
+%       fill=Location bar.bg, 
+      text=Location bar.fg
+    }}
+    \draw
+      (0,.3) node[text width=1mm]{}
+      (1,.3) node[location]{
+         \textit{\insertshortauthor}.
+      }
+      (6,.3) node[location, anchor=center]{
+%       \insertshorttitle.
+      }
+      (12.2,.3) node[location, anchor=east]{
+      \insertframenumber\ / \textbf{\inserttotalframenumber}
+      };
+  \end{tikzpicture}
+}

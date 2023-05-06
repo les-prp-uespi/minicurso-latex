@@ -1,0 +1,134 @@
+\section{Introdução}
+\subsection{}
+
+% =============== % 
+%     Frame       % 
+\begin{frame}
+\frametitle{Breve História do \LaTeX}
+
+\begin{itemize}
+  \item Processador de textos $x$ Editor de textos
+  \item \TeX (1977) -- Donald E. Knutch \includegraphics[scale=.4,keepaspectratio]{../img/knutch.pdf} 
+  \item \LaTeX (1985) -- Leslie Lamport  \includegraphics[scale=.4,keepaspectratio]{../img/lamport.pdf}
+  \item \LaTeX $2_{\epsilon}$ (1994) -- LaTeX3 Team
+\end{itemize}
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Por que usar \LaTeX?}
+
+% You can create overlays
+\begin{itemize}
+  \item Conteúdo $x$ Formatação 
+  \item Portabilidade
+  \item Acabamento gráfico superior
+  \item Estabilidade
+  \item Escalabilidade
+  \item Disponibilidade e custo
+  \item Utilização de arquivos texto
+  \item Suporte referências bibliográficas
+  \item Fácil manejo de documentos grandes
+\end{itemize}
+ 
+\end{frame}
+
+% =============== %
+%     Frame       % 
+\begin{frame}
+\frametitle{Limitações \LaTeX?}
+
+% You can create overlays
+\begin{itemize}
+  \item Personalização exige mais estudo
+  \item São necessárias várias ferramentas 
+  \item Legibilidade reduzida 
+  \item Aprendizagem mais lenta
+\end{itemize}
+ 
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Distribuições, Ajuda e Pacotes}
+
+% You can create overlays
+\begin{itemize}
+  \item Distribuições para instalação 
+  \begin{itemize}
+    \item Unix/Linux (TeXLive): \url{http://www.tug.org/texlive/}
+  	\item Windows (MikTeX): \url{http://www.miktex.org/}
+  	\item MAC OS (MacTeX): \url{http://www.tug.org/mactex/}
+  \end{itemize}
+
+  \item Pessoas dispostas a ajudar
+  \begin{itemize}
+ 	 \item \TeX~StackChange: \url{http://tex.stackexchange.com/}
+  \end{itemize}
+  
+  \item Pacotes: arquivos e documentação
+  \begin{itemize}
+  	\item CTAN: \url{http://www.ctan.org/}
+  \end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Livros para Estudo}
+
+\begin{columns}
+\column{.5\textwidth}
+\includegraphics[scale=.15]{../img/livro1.pdf}  \textbf{LaTeX: A Documentation Preparation System}
+Leslie Lamport e Duane Bibby 
+
+ \includegraphics[scale=.3]{../img/livro2.pdf}  \textbf{The LaTeX
+Companion} Michel Goossens, Frank Mittelbach e Alexander Samarin 
+
+\column{.5\textwidth}
+	 \includegraphics[scale=.3]{../img/livro3.pdf} \textbf{A Guide to LaTeX: Document Preparation for
+Beginners and Advanced Users} Helmut Kopka e Patrick W. Daly 
+
+\includegraphics[scale=.15]{../img/livro4.pdf} \textbf{The LaTeX Graphics Companion} Michel Goossens,
+Sebastian Rahtz e Frank Mittelbach
+\end{columns}
+ 
+\end{frame} 
+
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Estrutura lógica dos arquivos \LaTeX}
+{\small
+\begin{block}{Preâmbulo}
+Tipos de documento, pacotes adicionais e comando gerais. 
+\begin{verbatim}
+	\documentclass[12pt,a4paper]{article}
+	\usepackage{graphicx}
+	\newcommand{\titulo}[1]{\large\bf #1}
+	...
+\end{verbatim}
+\end{block}
+
+\begin{block}{Corpo}
+O texto do documento.
+\begin{verbatim}
+	\begin{document}
+ 	...
+	\end{document}
+\end{verbatim}
+\end{block}
+}
+ 
+\end{frame}
+
+

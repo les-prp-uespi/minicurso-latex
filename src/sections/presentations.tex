@@ -1,0 +1,596 @@
+\section{Apresentações com Beamer}
+
+
+\subsection[Estrutura]{Estrutura}
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Sobre o Beamer}
+\begin{itemize}
+  \item Os comandos padrões e \LaTeXe\ também funcionam no Beamer
+  \item Súmários podem ser gerados automáticamente
+  \item Você pode facilmente criar efeitos dinâmicos
+  \item A aparência pode ser mudada com uso de temas à seu gosto
+  \item Os temas disponíveis por padrão são bem estruturados e fáceis de ler. O que torna a
+  apresentação mais profissional e fácil da audiência seguir.
+\end{itemize}
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Sobre o Beamer}
+\begin{itemize}
+  \item A aparência, cores e fontes utilizada na apresentação podem ser facilmente alterada de forma
+  \textit{global}, mas alterações podem ser feitas de forma \textit{local}
+  \item Você pode cirar apresentações usando o mesmo código utilizado no seu artigo \LaTeX
+  \item A saída produzida é típicamente um \textcolor{darkcerulean}{\textit{.pdf} file}, o que
+  facilita a apresentação em qualquer plataforma
+  \item {\color{darkcerulean}Sua apresntação irá ter a mesma estrutua, independente de qual
+  computador ou visualizador está sendo utilizado}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Onde achar o Beamer?}
+\begin{center}
+Beamer está disponível para download \textcolor{darkcerulean}{\textit{gratuitamente}} em:\newline
+\textcolor{darkcerulean}{\url{https://bitbucket.org/rivanvx/beamer/wiki/Home}}
+\end{center}
+\begin{center}
+Existe bastante coisa sobre Beamer na Internet e existe também uma 
+\textit{documentação} Beamer disponível no repositório acima e no endereço abaixo: \newline
+\url{http://www.ctan.org/tex-archive/macros/latex/contrib/beamer/doc/}
+\end{center}
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Usando templates prontos}
+\begin{itemize}
+  \item A maneira mais rápida de iniciar a desenvolver apresentações com Beamer é utilizar-se de
+  templates prontos.
+  \item Vários templates prontos estão disponíveis no repositório do Beamer
+  \item Um exemplo pode ser encontrado seguindo este caminho:
+  \url{beamer/solutions/conference-talks/conference-ornate-20min.en.tex}
+  \item Copie o arquivo e modifique os conteúdos.
+\end{itemize}
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Para testar suas apresentações}
+\begin{itemize}
+  \item Para ver como é uma apresentação, compile o código \LaTeX\ \textcolor{darkcerulean}{duas}
+  vezes
+  \item Abra o arquivo \textit{.pdf} com o visualizador disponível e utilize em modo ``Tela Cheia''
+  \item O sumário gerado tem \textit{hyperlinks} nas seções e subseções, além de uma linha
+  auxiliar com botões de navegação
+\end{itemize}
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Frames}
+\scriptsize
+
+\begin{itemize}
+  \item  Cada projeto Beamer é feito de uma série de \textcolor{darkcerulean}{\textit{frames}}. Cada frame
+produz um ou mais slides, dependendo da existência ou não de ``\textit{overlays}'', as quais serão
+discutidas mais tarde.
+  \item  A opção \verb|[plain]| causa a supressão de ``cabeçalho'', ``rodapé'', e ``barra lateral''.
+  Útil pra exibir figuras grandes.
+
+\end{itemize}
+\begin{block}{Um frame básico}
+	\verb|\begin{frame}[<alignment>]| \newline
+  	\verb|\frametitle{Frame Title Goes Here}|\newline
+	\verb|	Texto do frame e/ou o código LaTeX.|\newline
+	\verb|\end{frame}|
+\end{block} 
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Frames}
+\scriptsize
+\begin{itemize}
+  \item Para compor frames basta escrever seu texto ou código \LaTeX\ entre os
+comandos \verb|\begin{}| e \verb|\end{}| frame.
+  \item Os frames são centralizados \verb|[c]| por padrão. Os valores \verb|[t]| (alinhamento
+superior) e \verb|[b]|  (alinhamento inferior) também são aceitos.
+\end{itemize}
+
+\begin{block}{Um frame básico}
+	\verb|\begin{frame}[t]|\newline
+  	\verb|\frametitle{Frame Title Goes Here}|\newline
+	\verb|	Texto do frame e/ou o código LaTeX.|\newline
+	\verb|\end{frame}|
+\end{block}
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{``Capa'' para a apresentação }
+O frame de capa mostra somente as informações inserida no início do documento:
+
+\begin{block}{Um frame básico}
+	\verb|\begin{frame}|\newline
+  	\verb|   \titlepage|\newline
+	\verb|\end{frame}|
+\end{block}
+
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{``Capa'' para a apresentação }
+Por padrão, o comando \verb|\titlepage| cria uma página que inclui:
+\begin{itemize}
+  \item Título
+  \item Autor
+  \item Afiliação
+  \item Data
+  \item Imagem (logo)
+\end{itemize}
+
+Caso algum desses valores não seja declarados no preâmbulo, eles não seram incluídos do slide de
+capa.
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Slide de Sumário}
+O comando \verb|\tableofcontents| cria dinamicamente o sumário baseado na estrutura que você
+definiu
+ 
+\begin{block}{Slide de Sumário}
+\scriptsize
+	\verb|\begin{frame}|\newline
+	\verb|  \frametitle{Sumário}|\newline
+  	\verb|  \tableofcontents[ pausesections]|\newline
+	\verb|\end{frame}|
+\end{block}
+
+Perceba que o argumento \texttt{pausesections} permite que os items apareçam seção à seção.
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Juntando as coisas}
+ 
+\begin{block}{Exemplo}
+\scriptsize
+	\verb|\begin{frame}|\newline
+	\verb|  \titlepage|\newline
+	\verb|\end{frame}|
+	\newline
+	\verb|\begin{frame}|\newline
+	\verb|  \frametitle{Sumário}|\newline
+  	\verb|  \tableofcontents[ pausesections]|\newline
+	\verb|\end{frame}|\newline
+	\newline
+ 	\verb|\begin{frame}|\newline
+	\verb|  \frametitle{Introdução}|\newline
+  	\verb|  Corpo do texto ou código LaTeX.|\newline
+	\verb|\end{frame}|
+\end{block}
+
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Overlays}
+\begin{itemize}
+  \item \textit{Overlays} permitem que seus slides apareçam incrementalmente.
+  \item Mais especificamente, em Beamer, \textcolor{darkcerulean}{overlays} controlam a ordem na
+  qual as partes do frame aparecem.
+  \item Uma maneira fácil de implementar overlays é usar o comando \verb|\pause| entre as partes que
+  devem aparecer serparadamente
+\end{itemize}
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Overlays}
+Por exemplo: 
+
+\begin{verbatim}
+\textbf{Step1:} Compute the maximal suffix of $w$
+with respect to $\preceq_l$ (say $v$) and the
+maximal suffix of $w$ with respect to $\preceq_r$
+(say $v’$).
+\pause
+
+\textbf{Step 2:} Find words $u$, $u’$ such that
+$w = uv = u’v’$.
+\pause
+
+\textbf{Step 3:} If $|v| \le |v’|$, then output
+$(u,v)$. Otherwise, output$(u’,v’)$.
+\end{verbatim}
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Overlays (Resultado)}
+\textbf{Step1:} Compute the maximal suffix of $w$
+with respect to $\preceq_l$ (say $v$) and the
+maximal suffix of $w$ with respect to $\preceq_r$
+(say $v’$).
+\pause
+
+\textbf{Step 2:} Find words $u$, $u’$ such that
+$w = uv = u’v’$.
+\pause
+
+\textbf{Step 3:} If $|v| \le |v’|$, then output
+$(u,v)$. Otherwise, output$(u’,v’)$.
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Especificação de Overlays}
+São feitas com os símbolos ($<$, $>$) e indicam quais partes devem aparecer
+
+A especificação \verb|<1->| diz ``mostre do slide 1 em diante.'' \verb|<1-3>| diz ``mostre do
+slide 1 ao 3.'' \verb|<-3,5-6,8->| diz ``mostre todos os slides, exceto os slides 4 e 7.''
+
+Um exemplo:
+\begin{columns}
+	\column{.5\textwidth}
+	\small
+\begin{verbatim}
+	\begin{itemize}
+   \item<1>    $abcadcabca$
+   \item<1-2>  $abcabcabca$
+   \item<1-2>  $accaccacca$
+   \item<1>    $bacabacaba$
+   \item<1,3>  $cacdaccacc$
+   \item<1-2>  $caccaccacc$
+\end{itemize}
+\end{verbatim}
+	\column{.5\textwidth}
+	\small
+\begin{itemize}
+   \item<1>    $abcadcabca$
+   \item<1-2>  $abcabcabca$
+   \item<1-2>  $accaccacca$
+   \item<1>    $bacabacaba$
+   \item<1,3>  $cacdaccacc$
+   \item<1-2>  $caccaccacc$
+\end{itemize}\end{columns}
+
+\end{frame}
+
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Especificação de Overlays}
+Podem também ser utilizadas para dar efeito em partes do texto. Por exemplo, o código abaixo
+aplica o comando \verb|\alert{}| somente nos slides especificados:
+
+\begin{columns}
+	\small
+	\column{.6\textwidth}
+\begin{verbatim}
+\alert{Todos slides}
+\alert<2>{Slide 2}
+\alert<3>{Slide 3}
+\alert<1,3>{Slides 1 e 3}
+\alert<-2,4>{Slides 1, 2 e 4}
+\end{verbatim} 
+	\column{.4\textwidth}
+	\alert{Todos slides}
+
+\alert<2>{Slide 2}
+
+\alert<3>{Slide 3}
+
+\alert<1,3>{Slides 1 e 3}
+
+\alert<-2,4>{Slides 1, 2 e 4}
+\end{columns}
+\vspace{.5cm}
+\textbf{Nota:} Se quiser que cada item de uma lista apareça em ordem, basta usar a opção
+\verb|[<+->]|. Exemplo: \verb|\begin{itemize}[<+->]|
+
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Overlays em ambientes}
+
+Overlays também podem ser utilizados em ambientes
+
+\begin{columns}
+	\column{.5\textwidth}
+	\scriptsize
+\begin{verbatim}
+\begin{theorem}<1->
+  Um teorema.
+\end{theorem}
+
+\begin{proof}<2->
+  Uma prova.
+\end{proof}
+\end{verbatim}
+	\column{.5\textwidth}
+	\scriptsize
+\begin{theorem}<1->
+   Um teorema.
+  \end{theorem}
+  \begin{proof}<2->
+   Uma prova.
+  \end{proof}
+\end{columns}
+
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Estrutura dos Frames}
+Beamer provêm muitas formas de estruturar seus slides de forma que ele fiquem bem
+organizados e fácil de sua audiência seguir. Como exemplos, temos:
+
+\begin{itemize}
+  \item Columns
+  \item Blocks
+  \item Boxes (Borders)
+\end{itemize}
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Estrutura dos Frames: Colunas}
+
+O ambiente pode ser chamado como segue:
+
+\begin{block}{}
+\small
+\verb|\begin{columns}|
+
+\verb|  \column{.xx\textwidth}|
+
+\verb|   Texto ou código da segunda coluna|
+
+\verb|  \column{.xx\textwidth}|
+
+\verb|   Texto ou código da segunda coluna|
+
+\verb|\end{columns}|
+\end{block}
+
+Onde \alert{.xx} é porcentagem do slide. 
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Estruturas dos Slides: Blocos}
+Blocos podem ser utilizados para serparar uma porção específica do texto do restante do slide:
+
+{\small
+\begin{verbatim}
+\begin{block}{Introdução à {\LaTeX}}
+``Beamer é uma classe {\LaTeX} para criar
+ apresentações\ldots''
+\end{block}
+\end{verbatim}
+}
+
+\begin{block}{Introdução à {\LaTeX}}
+``Beamer é uma classe {\LaTeX} para criar apresentações\ldots''
+\end{block}
+
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Estruturas dos Slides: Blocos}
+Outros ambientes podem ser utilizados como blocos:
+
+
+\begin{block}{Introduction to {\LaTeX}}
+\begin{tabular}{l|l}
+\textbf{Conteúdo} & \textbf{Ambiente correspondente} \\
+\hline
+Genérico & \texttt{block}\\
+Teoremas & \texttt{theorem}\\
+Lemas & \texttt{lemma}\\
+Provas & \texttt{proof}\\
+Corolários & \texttt{corollary}\\
+Exemplos & \texttt{example}\\
+Título em destaque & \texttt{alertblock}\\
+\end{tabular}
+\end{block}
+
+\end{frame}
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Estruturas dos Frames: Colunas e Blocos}
+
+Podemos combinar ``colunas'' e ``blocos'' para fazer uma apresentação mais limpa.
+
+\begin{verbatim}
+\begin{columns}[t]
+   \column{.5\textwidth}
+       \begin{block}{Cabeçalho da Coluna 1}
+          Corpo do texto da Coluna 1
+       \end{block}
+   \column{.5\textwidth}
+       \begin{block}{Cabeçalho da Coluna 2}
+          Corpo do texto da Coluna 2
+       \end{block}
+\end{columns}
+\end{verbatim}
+
+E temos como resultado\ldots
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Estruturas dos Frames: Colunas e Blocos}
+
+
+\begin{columns}[t]
+   \column{.5\textwidth}
+       \begin{block}{Cabeçalho da Coluna 1}
+          Corpo do texto da Coluna 1
+       \end{block}
+   \column{.5\textwidth}
+       \begin{block}{Cabeçalho da Coluna 2}
+          Corpo do texto da Coluna 2
+       \end{block}
+\end{columns}
+\vspace{1cm}
+
+Perceba que a opção \verb|[t]| adicionado ao ambiente de colunas alinha os blocos por cima para que
+eles fiquem na mesma linha vertical, diferentemente de centralizado no slide.
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Estruturas dos Frames: Colunas e Blocos}
+
+Bordas também podem ser utilizadas para adicionar uma organização à sua aprsentação. Com o uso do
+pacote \texttt{fancybox} (lembre-se de declarar \verb|\usepackage{facybox}| no preâmbulo). 
+
+\begin{block}{Borda de Textos}
+\begin{tabular}{l|l}
+\small
+\textbf{Comando} & \textbf{Resultado} \\
+\hline
+\verb|\shadowbox{Texto}| & \shadowbox{Texto}\\
+\verb|\fbox{Texto}| & \fbox{Texto}\\
+\verb|\doublebox{Texto}| & \doublebox{Texto}\\
+\verb|\ovalbox{Texto}| & \ovalbox{Texto}\\
+\verb|\Ovalbox{Texto}| & \Ovalbox{Texto}\\
+\end{tabular}
+\end{block}
+\end{frame}
+
+
+\subsection[Aparência]{Aparência}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Temas}
+Temas podem mudar completamente a aparência de sua apresentação. Você escolhe o tema a ser
+utilizados usando o comando \verb|\usetheme{}| com um dos seguintes argumentos:
+
+\begin{block}{}
+\centering
+\begin{tabular}{cccc}
+\small
+\texttt{Antibes} & \texttt{Boadilla} & \texttt{Frankfurt} & \texttt{Juanlespins} \\
+\texttt{Montpellier} & \texttt{Singapore} & \texttt{Bergen} & \texttt{Copenhagen} \\
+\texttt{Goettingen} & \texttt{Madrid} & \texttt{Paloalto} & \texttt{Warsaw} \\
+\texttt{Berkeley} & \texttt{Darmstadt} & \texttt{Hannover} & \texttt{Malmoe} \\
+\texttt{Pittsburgh} & \texttt{Berlin} & \texttt{Dresden} & \texttt{Ilmenau} \\
+\texttt{Marburg} & \texttt{Rochester} & & \\
+\end{tabular}
+\end{block}
+
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Cores dos Temas}
+Se você gosta do ``layout'' de um tema, mas não gosta da cor, você pode facilmente invocar uma nova
+cor para o tema substituindo \texttt{default} no comando \verb|\usetheme{default}| inserido no
+preâmbulo por um dos seguintes argumentos:
+
+\begin{block}{}
+\centering
+\begin{tabular}{cccc}
+\small
+\texttt{albatross} & \texttt{crane} & \texttt{beetle} & \texttt{dove} \\
+\texttt{fly} & \texttt{seagull} & \texttt{wolverine} & \texttt{beaver} \\
+\end{tabular}
+\end{block}
+
+\end{frame}
+
+
+
+% =============== %
+%     Frame       %
+\begin{frame}[fragile]
+\frametitle{Cores dos Temas}
+Existe também a possibilidade de especificar cores para a parte \textit{interna} ou
+\textit{externa} da mesma forma da cor geral do tema: substituindo \texttt{default} no comando
+\verb|\usetheme{default}|.
+
+
+\begin{columns}[t]
+   \column{.5\textwidth}
+       \begin{block}{Opções parte interna}
+          \centering
+\begin{tabular}{ccc}
+\small
+\texttt{lily} & \texttt{orchid} & \texttt{rose} \\
+\end{tabular}
+       \end{block}
+   \column{.5\textwidth}
+       \begin{block}{Opções parte externa}
+                    \centering
+\begin{tabular}{ccc}
+\small
+\texttt{whale} & \texttt{seahorse} & \texttt{dolphin} \\
+\end{tabular}
+       \end{block}
+\end{columns}
+
+\end{frame}
+
+
+% =============== %
+%     Frame       %
+\begin{frame}
+\frametitle{Exercício}
+
+% You can create overlays
+\begin{enumerate}
+  \item Elaborar uma apresentação com as estruturas vistas.
+\end{enumerate}
+ 
+\end{frame}
+
